@@ -7,12 +7,27 @@ import { Wraper, Backdoor, Content } from "./styles";
 const SingleMovie = () => {
   const { id } = useParams();
   const { request, data, loading, api_key } = useFetch();
+  let age;
+  let provider;
 
   useEffect(() => {
     request(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}&language=pt-BR`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}&language=pt-BR&append_to_response=release_dates`
     );
   }, [id]);
+  function getAge() {
+    const release = data.release_dates.results.filter(
+      (country) => country.iso_3166_1 === "BR"
+    );
+    if (release.length > 0) {
+      return release[0].release_dates[0].certification;
+    } else {
+      return "";
+    }
+  }
+  if (data) {
+    age = getAge();
+  }
 
   if (loading) return <Loading />;
   if (data === null) return null;
@@ -38,10 +53,31 @@ const SingleMovie = () => {
               </div>
             </div>
             <div className="details">
-              <h1>
+              <h1 className="title">
                 {data.title} ({data.release_date.substr(0, 4)})
               </h1>
-              <h2>{data.tagline}</h2>
+
+              <div className="subDet">
+                {age === "" ? null : <span className="age">{age}</span>}
+                <span className="releaseDate">
+                  {data.release_date.split("-").reverse().join("/")} (BR)
+                </span>
+                <span className="genre">
+                  {data.genres.map((genre, index) => (
+                    <span key={genre.id}>
+                      {genre.name}
+                      {data.genres.length - 1 == index ? "" : ", "}{" "}
+                    </span>
+                  ))}
+                </span>
+                <span className="time">
+                  {Math.floor(data.runtime / 60)}h{" "}
+                  {data.runtime > 60 ? (data.runtime % 60) + "m " : ""}
+                </span>
+              </div>
+
+              <div className="avarage">{data.vote_average * 10}%</div>
+              <p>{data.tagline}</p>
               <h1>Sinopse</h1>
               <p>{data.overview}</p>
             </div>

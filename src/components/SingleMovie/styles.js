@@ -66,5 +66,85 @@ export const Content = styled.div`
 
   .details {
     margin-left: 30px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 70px 0;
+
+    .age {
+      display: inline-block;
+      margin-right: 5px;
+      padding: 0.06em 4px 0.15em 4px;
+      color: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      align-items: center;
+      justify-content: center;
+      display: inline-flex;
+      border-radius: 2px;
+      line-height: 1;
+      font-size: 1em;
+    }
+
+    .time {
+      position: relative;
+      margin-left: 20px;
+      &::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        position: absolute;
+        left: -15px;
+        top: 7px;
+        display: inline-flex;
+        align-content: center;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 100%;
+      }
+    }
+
+    .genre {
+      position: relative;
+      margin-left: 20px;
+      &::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        position: absolute;
+        left: -15px;
+        top: 7px;
+        display: inline-flex;
+        align-content: center;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 100%;
+      }
+    }
+
+    .releaseDate {
+      margin-right: 5px;
+    }
+
+    .subDet {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .avarage {
+      background-color: #081c22;
+      display: flex;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+
+    h2,
+    p {
+      color: #ddd;
+    }
   }
 `;

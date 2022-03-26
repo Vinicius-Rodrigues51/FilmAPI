@@ -37,7 +37,9 @@ const Home = () => {
         {data.results.map((film) => (
           <li key={film.id}>
             <div className="imgBox">
-              <Link to={`/${film.id}`}>
+              <Link
+                to={`/${film.id}-${film.original_title.split(" ").join("-")}`}
+              >
                 <img
                   src={`https://image.tmdb.org/t/p/w400${film.poster_path}`}
                   alt={film.title}
