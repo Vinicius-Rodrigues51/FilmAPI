@@ -147,4 +147,143 @@ export const Content = styled.div`
       color: #ddd;
     }
   }
+
+  .consensus {
+    width: 68px;
+    height: 68px;
+    display: inline-block;
+  }
+
+  .outer_ring {
+    display: inline-block;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    padding: 4px;
+    background-color: #081c22;
+  }
+
+  .user_score_chart {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+
+  .percent {
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .icon {
+      color: #fff;
+    }
+  }
+
+  .tagline {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .trailer {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .overview {
+    margin-bottom: 20px;
+  }
+
+  .trailerButton {
+    font-size: 20px;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px 0;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  .credits {
+    max-width: 80%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    h4 {
+      font-weight: bold;
+    }
+  }
+`;
+
+export const Cast = styled.div`
+  max-width: 1320px;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding-bottom: 200px;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(227, 227, 227);
+    border-radius: 20px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #fff;
+  }
+
+  .castSlider {
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+    padding: 0 10px;
+
+    &::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 20px;
+      background-color: rgb(219, 219, 219);
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  }
+
+  .singleActor {
+    width: 140px;
+    margin-bottom: 20px;
+    background: ${(props) => props.theme.colors.background};
+    color: ${(props) => props.theme.colors.text};
+    border-radius: 7px;
+    box-shadow: 1px 2px 13px -5px #000000;
+  }
+
+  .castDet {
+    margin: 10px;
+    font-size: 16px;
+
+    h3 {
+      font-weight: bold;
+      font-size: 18px;
+    }
+  }
+
+  img {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 140px;
+  }
 `;

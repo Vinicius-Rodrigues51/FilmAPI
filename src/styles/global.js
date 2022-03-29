@@ -14,7 +14,8 @@ export default createGlobalStyle`
      transition: background-color .4s ease;
      font-size: 18px;
      overflow-x: hidden;
- }
+    }
+
 
  h1,h2,h3,h4,h5 {
      font-weight: 400;

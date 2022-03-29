@@ -2,19 +2,48 @@ import React, { Fragment, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../../helper/Loading";
 import useFetch from "../../hooks/useFetch";
-import { Wraper, Backdoor, Content } from "./styles";
+import ProgressBar from "../ProgressBar/ProgressBar";
+import { Wraper, Backdoor, Content, Cast } from "./styles";
 
 const SingleMovie = () => {
   const { id } = useParams();
   const { request, data, loading, api_key } = useFetch();
   let age;
-  let provider;
+  let crew;
+  let characters;
+  let cast;
 
   useEffect(() => {
     request(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}&language=pt-BR&append_to_response=release_dates`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}&language=pt-BR&append_to_response=release_dates,credits`
     );
   }, [id]);
+
+  // ALTERAR A SCROLL BAR E COLOCAR A IMAGEM DO WATCH PROVIDER, QUE A URL ESTA NO MEU BLOCO DE NOTAS
+
+  function getCast() {
+    const cast = data.credits.cast.slice(0, 10);
+    return cast;
+  }
+
+  function getCrew() {
+    const crew = data.credits.crew.filter(
+      (crewMember) => crewMember.job === "Director"
+    );
+    if (crew.length) {
+      return crew;
+    }
+  }
+
+  function getCharacters() {
+    const crew = data.credits.crew.filter(
+      (crewMember) => crewMember.job === "Characters"
+    );
+    if (crew.length) {
+      return crew;
+    }
+  }
+
   function getAge() {
     const release = data.release_dates.results.filter(
       (country) => country.iso_3166_1 === "BR"
@@ -27,6 +56,9 @@ const SingleMovie = () => {
   }
   if (data) {
     age = getAge();
+    crew = getCrew();
+    characters = getCharacters();
+    cast = getCast();
   }
 
   if (loading) return <Loading />;
@@ -76,14 +108,54 @@ const SingleMovie = () => {
                 </span>
               </div>
 
-              <div className="avarage">{data.vote_average * 10}%</div>
-              <p>{data.tagline}</p>
+              <div className="trailer">
+                <ProgressBar data={data.vote_average} />
+                <button className="trailerButton">Reproduzir trailer</button>
+              </div>
+
+              <p className="tagline">{data.tagline}</p>
               <h1>Sinopse</h1>
-              <p>{data.overview}</p>
+              <p className="overview">{data.overview}</p>
+
+              <div className="credits">
+                {crew.map((member) => (
+                  <div key={member.id}>
+                    <h4>{member.name}</h4>
+                    <p>Diretor</p>
+                  </div>
+                ))}
+
+                {characters &&
+                  characters.map((member) => (
+                    <div key={member.id}>
+                      <h4>{member.name}</h4>
+                      <p>Personagens</p>
+                    </div>
+                  ))}
+              </div>
             </div>
           </Content>
         </Backdoor>
       </Wraper>
+
+      <Cast>
+        <h1>Elenco principal</h1>
+
+        <ul className="castSlider">
+          {cast.map((actor) => (
+            <li className="singleActor" key={actor.id}>
+              <img
+                src={`https://image.tmdb.org/t/p/w138_and_h175_face${actor.profile_path}`}
+                alt=""
+              />
+              <div className="castDet">
+                <h3>{actor.name}</h3>
+                <p>{actor.character}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </Cast>
     </Fragment>
   );
 };
