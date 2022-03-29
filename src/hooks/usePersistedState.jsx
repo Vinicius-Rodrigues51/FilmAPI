@@ -5,7 +5,7 @@ const usePersistedState = (key, initialState) => {
     const storageValue = localStorage.getItem(key);
 
     if (!storageValue) {
-      initialState;
+      return initialState;
     } else {
       return JSON.parse(storageValue);
     }
