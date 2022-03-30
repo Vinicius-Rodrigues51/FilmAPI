@@ -21,18 +21,19 @@ export const ProgressBars = styled.div`
   .value-container {
     position: relative;
     color: #fff;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
     z-index: 3;
   }
 
   .value {
-    position: relative;
+    /* position: relative; */
     &::after {
       content: "%";
-      position: absolute;
-      font-size: 10px;
-      top: 3px;
+      position: relative;
+      font-size: 14px;
+      top: -6px;
+      font-weight: bold;
     }
   }
 `;

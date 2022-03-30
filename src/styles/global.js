@@ -14,6 +14,20 @@ export default createGlobalStyle`
      transition: background-color .4s ease;
      font-size: 18px;
      overflow-x: hidden;
+
+     &::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 20px;
+      background-color: rgb(219, 219, 219);
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
     }
 
 

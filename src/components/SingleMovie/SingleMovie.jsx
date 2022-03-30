@@ -1,28 +1,53 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../../helper/Loading";
 import useFetch from "../../hooks/useFetch";
+import Modal from "../Modal/Modal";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import { Wraper, Backdoor, Content, Cast } from "./styles";
+import { ReactComponent as Player } from "../../Assets/player.svg";
 
 const SingleMovie = () => {
+  const [modal, setModal] = useState(null);
   const { id } = useParams();
   const { request, data, loading, api_key } = useFetch();
   let age;
   let crew;
   let characters;
   let cast;
+  let provider;
+  let released;
 
   useEffect(() => {
     request(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}&language=pt-BR&append_to_response=release_dates,credits`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}&language=pt-BR&append_to_response=release_dates,credits,videos,watch/providers`
     );
   }, [id]);
 
-  // ALTERAR A SCROLL BAR E COLOCAR A IMAGEM DO WATCH PROVIDER, QUE A URL ESTA NO MEU BLOCO DE NOTAS
+  function isReleased() {
+    if (data) {
+      if (data.status === "Released") {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
+  function getProviders() {
+    const providers = data["watch/providers"].results.BR;
+    const providersUS = data["watch/providers"].results.US;
+    if (providers) {
+      return providers.flatrate[0].logo_path;
+    } else if (providersUS && providersUS.flatrate) {
+      return providersUS.flatrate[0].logo_path;
+    } else {
+      return null;
+    }
+  }
 
   function getCast() {
-    const cast = data.credits.cast.slice(0, 10);
+    const cast = data.credits.cast.slice(0, 13);
     return cast;
   }
 
@@ -59,12 +84,15 @@ const SingleMovie = () => {
     crew = getCrew();
     characters = getCharacters();
     cast = getCast();
+    provider = getProviders();
+    released = isReleased();
   }
 
   if (loading) return <Loading />;
   if (data === null) return null;
   return (
     <Fragment>
+      {modal && <Modal modal={modal} setModal={setModal} id={id} />}
       <Wraper
         style={{
           backgroundImage: `url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${data.backdrop_path})`,
@@ -80,8 +108,20 @@ const SingleMovie = () => {
                 />
               </div>
               <div className="content">
-                <p>{data.status ? "No Ar" : "Não lançado"}</p>
-                <h3>{data.status ? "Assista agora" : ""}</h3>
+                {provider && (
+                  <div className="provider">
+                    <img
+                      src={`https://image.tmdb.org/t/p/original${provider}`}
+                      alt=""
+                    />
+                  </div>
+                )}
+                {released && (
+                  <div className="descript">
+                    <p>No ar</p>
+                    <h3>Assista agora</h3>
+                  </div>
+                )}
               </div>
             </div>
             <div className="details">
@@ -110,7 +150,24 @@ const SingleMovie = () => {
 
               <div className="trailer">
                 <ProgressBar data={data.vote_average} />
-                <button className="trailerButton">Reproduzir trailer</button>
+                <div
+                  className="player"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                    cursor: "pointer",
+                  }}
+                >
+                  {/* cuidar da estilização do botao de player */}
+                  <Player className="svg" />
+                  <button
+                    className="trailerButton"
+                    onClick={() => setModal(true)}
+                  >
+                    Reproduzir trailer
+                  </button>
+                </div>
               </div>
 
               <p className="tagline">{data.tagline}</p>

@@ -57,13 +57,34 @@ export const Content = styled.div`
 
   .content {
     background: rgb(3, 37, 65);
-    padding: 10px 0;
-    text-align: center;
+    text-align: left;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    p,
+    h3 {
+      font-size: 18px;
+    }
+
+    .descript {
+      padding: 10px 0;
+    }
   }
 
+  .provider {
+    height: 40px;
+    width: 40px;
+    img {
+      height: 40px;
+      width: 40px;
+      border-radius: 4px;
+    }
+  }
   .details {
     margin-left: 30px;
     color: white;
