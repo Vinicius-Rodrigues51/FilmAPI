@@ -111,11 +111,11 @@ export const Content = styled.div`
       margin-left: 20px;
       &::before {
         content: "";
-        width: 8px;
-        height: 8px;
+        width: 5px;
+        height: 5px;
         position: absolute;
-        left: -15px;
-        top: 7px;
+        left: -13px;
+        top: 8px;
         display: inline-flex;
         align-content: center;
         align-items: center;
@@ -126,20 +126,7 @@ export const Content = styled.div`
 
     .genre {
       position: relative;
-      margin-left: 20px;
-      &::before {
-        content: "";
-        width: 8px;
-        height: 8px;
-        position: absolute;
-        left: -15px;
-        top: 7px;
-        display: inline-flex;
-        align-content: center;
-        align-items: center;
-        background-color: #fff;
-        border-radius: 100%;
-      }
+      margin-left: 0px;
     }
 
     .releaseDate {

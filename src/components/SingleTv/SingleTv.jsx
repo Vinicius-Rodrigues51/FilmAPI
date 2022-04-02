@@ -7,21 +7,19 @@ import ProgressBar from "../ProgressBar/ProgressBar";
 import { Wraper, Backdoor, Content, Cast } from "./styles";
 import { ReactComponent as Player } from "../../Assets/player.svg";
 
-const SingleMovie = () => {
+const SingleTv = () => {
   const [modal, setModal] = useState(null);
   const { id } = useParams();
   const { request, data, loading, api_key } = useFetch();
-  let type = "movie";
+  let type = "tv";
   let age;
-  let crew;
-  let characters;
-  let cast;
   let provider;
   let isVideos;
+  let cast;
 
   useEffect(() => {
     request(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}&language=pt-BR&append_to_response=release_dates,credits,videos,watch/providers`
+      `https://api.themoviedb.org/3/tv/${id}?api_key=${api_key}&language=pt-BR&append_to_response=content_ratings,credits,videos,watch/providers`
     );
   }, [id]);
 
@@ -45,43 +43,25 @@ const SingleMovie = () => {
     }
   }
 
-  function getCast() {
-    const cast = data.credits.cast.slice(0, 13);
-    return cast;
-  }
-
-  function getCrew() {
-    const crew = data.credits.crew.filter(
-      (crewMember) => crewMember.job === "Director"
-    );
-    if (crew.length) {
-      return crew;
-    }
-  }
-
-  function getCharacters() {
-    const crew = data.credits.crew.filter(
-      (crewMember) => crewMember.job === "Characters"
-    );
-    if (crew.length) {
-      return crew;
-    }
-  }
-
   function getAge() {
-    const release = data.release_dates.results.filter(
+    const release = data.content_ratings.results.filter(
       (country) => country.iso_3166_1 === "BR"
     );
     if (release.length > 0) {
-      return release[0].release_dates[0].certification;
+      return release[0].rating;
     } else {
       return "";
     }
   }
+
+  function getCast() {
+    const cast = data.credits.cast.slice(0, 10);
+    return cast;
+  }
+
   if (data) {
     age = getAge();
-    crew = getCrew();
-    characters = getCharacters();
+    // characters = getCharacters();
     cast = getCast();
     provider = getProviders();
     isVideos = isVideo();
@@ -104,6 +84,7 @@ const SingleMovie = () => {
   return (
     <Fragment>
       {modal && <Modal modal={modal} setModal={setModal} id={id} type={type} />}
+
       <Wraper
         style={{
           backgroundImage: `url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${data.backdrop_path})`,
@@ -135,14 +116,11 @@ const SingleMovie = () => {
             </div>
             <div className="details">
               <h1 className="title">
-                {data.title} ({data.release_date.substr(0, 4)})
+                {data.name} ({data.first_air_date.substr(0, 4)})
               </h1>
 
               <div className="subDet">
                 {age === "" ? null : <span className="age">{age}</span>}
-                <span className="releaseDate">
-                  {data.release_date.split("-").reverse().join("/")} (BR)
-                </span>
                 <span className="genre">
                   {data.genres.map((genre, index) => (
                     <span key={genre.id}>
@@ -151,10 +129,7 @@ const SingleMovie = () => {
                     </span>
                   ))}
                 </span>
-                <span className="time">
-                  {Math.floor(data.runtime / 60)}h{" "}
-                  {data.runtime > 60 ? (data.runtime % 60) + "m " : ""}
-                </span>
+                <span className="time">{data.episode_run_time[0] + "m"}</span>
               </div>
 
               <div className="trailer">
@@ -172,23 +147,6 @@ const SingleMovie = () => {
               <p className="tagline">{data.tagline}</p>
               <h1>Sinopse</h1>
               <p className="overview">{data.overview}</p>
-
-              <div className="credits">
-                {crew.map((member) => (
-                  <div key={member.id}>
-                    <h4>{member.name}</h4>
-                    <p>Diretor</p>
-                  </div>
-                ))}
-
-                {characters &&
-                  characters.map((member) => (
-                    <div key={member.id}>
-                      <h4>{member.name}</h4>
-                      <p>Personagens</p>
-                    </div>
-                  ))}
-              </div>
             </div>
           </Content>
         </Backdoor>
@@ -219,4 +177,4 @@ const SingleMovie = () => {
   );
 };
 
-export default SingleMovie;
+export default SingleTv;

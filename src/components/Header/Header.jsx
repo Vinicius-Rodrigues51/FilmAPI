@@ -5,6 +5,7 @@ import { ThemeContext } from "styled-components";
 import { shade, tint } from "polished"; // pega a cor utilizada e usa tons de preto com Shade & de branco com Tin
 import sun from "../../Assets/sun.png";
 import moon from "../../Assets/moon.png";
+import { Link } from "react-router-dom";
 
 const Header = ({ toggleTheme }) => {
   const { colors, title } = useContext(ThemeContext); // Puxando o contexto global do theme
@@ -19,20 +20,20 @@ const Header = ({ toggleTheme }) => {
 
   return (
     <Container>
-      <a href="/">
+      <Link to={"/"}>
         <h2>Film World</h2>
-      </a>
+      </Link>
 
       <nav>
         <ul>
+          <Link to={"/movie"}>
+            <li>Filmes</li>
+          </Link>
+          <Link to={"/tv"}>
+            <li>Series</li>
+          </Link>
           <a href="#">
-            <li>Home</li>
-          </a>
-          <a href="#">
-            <li>List</li>
-          </a>
-          <a href="#">
-            <li>Category</li>
+            <li>Pesquisar</li>
           </a>
           <label htmlFor="Switch">
             <img src={isLight()} />

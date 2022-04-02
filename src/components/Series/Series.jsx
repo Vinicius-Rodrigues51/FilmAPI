@@ -4,7 +4,7 @@ import useFetch from "../../hooks/useFetch";
 import Loading from "../../helper/Loading";
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const Series = () => {
   const { data, request, loading, api_key } = useFetch();
   const [page, setPage] = useState(1);
 
@@ -23,7 +23,7 @@ const Home = () => {
 
   useEffect(() => {
     request(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=pt-BR&page=${page}`
+      `https://api.themoviedb.org/3/tv/popular?api_key=${api_key}&language=pt-BR&page=${page}`
     );
   }, [page]);
 
@@ -31,22 +31,20 @@ const Home = () => {
   if (data === null) return null;
   return (
     <Container>
-      <h2>Most popular Films</h2>
+      <h2>Series em alta</h2>
 
       <GridContainer>
-        {data.results.map((film) => (
-          <li key={film.id}>
+        {data.results.map((tv) => (
+          <li key={tv.id}>
             <div className="imgBox">
-              <Link
-                to={`/${film.id}-${film.original_title.split(" ").join("-")}`}
-              >
+              <Link to={`${tv.id}-${tv.original_name.split(" ").join("-")}`}>
                 <img
-                  src={`https://image.tmdb.org/t/p/w400${film.poster_path}`}
-                  alt={film.title}
+                  src={`https://image.tmdb.org/t/p/w400${tv.poster_path}`}
+                  alt={tv.name}
                 />
               </Link>
             </div>
-            <h3>{film.title}</h3>
+            <h3>{tv.name}</h3>
           </li>
         ))}
       </GridContainer>
@@ -59,4 +57,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Series;
