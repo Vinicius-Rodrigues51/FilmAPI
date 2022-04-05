@@ -61,8 +61,7 @@ const Midia = ({ data, loading, modal, setModal, type, id }) => {
             Mais populares
           </h3>
           <h3 id="videos">Videos {data.videos.results.length}</h3>
-          <h3>Imagens {data.images.logos.length}</h3>
-          <h3>Pôsteres {data.images.posters.length}</h3>
+          <h3 id="images">Pôsteres {data.images.posters.length}</h3>
         </div>
 
         <div className="populares show tab-content-item" id="populares-content">
@@ -98,6 +97,21 @@ const Midia = ({ data, loading, modal, setModal, type, id }) => {
                 frameBorder="0"
                 allowFullScreen={true}
               ></iframe>
+            </div>
+          ))}
+        </div>
+
+        <div className="images tab-content-item" id="images-content">
+          {data.images.posters.slice(0, 10).map((image) => (
+            <div
+              className="poster"
+              style={{ width: image.width }}
+              key={image.file_path}
+            >
+              <img
+                src={`https://image.tmdb.org/t/p/w533_and_h300_multi_faces${image.file_path}`}
+                alt=""
+              />
             </div>
           ))}
         </div>

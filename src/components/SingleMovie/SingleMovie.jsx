@@ -119,20 +119,22 @@ const SingleMovie = () => {
                   alt={`Poster do filme ${data.title}`}
                 />
               </div>
-              <div className="content">
-                {provider && (
+
+              {provider && (
+                <div className="content">
                   <div className="provider">
                     <img
                       src={`https://image.tmdb.org/t/p/original${provider}`}
                       alt=""
                     />
                   </div>
-                )}
-                <div className="descript">
-                  <p>No ar</p>
-                  <h3>Assista agora</h3>
+
+                  <div className="descript">
+                    <p>No ar</p>
+                    <h3>Assista agora</h3>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
             <div className="details">
               <h1 className="title">
