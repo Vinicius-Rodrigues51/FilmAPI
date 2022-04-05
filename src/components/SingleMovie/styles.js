@@ -265,7 +265,7 @@ export const Cast = styled.div`
   max-width: 1320px;
   margin: 0 auto;
   margin-top: 30px;
-  padding-bottom: 200px;
+  margin-bottom: 100px;
 
   &::-webkit-scrollbar-thumb {
     background-color: rgb(227, 227, 227);

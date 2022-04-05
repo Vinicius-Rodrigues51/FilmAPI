@@ -17,7 +17,6 @@ const Modal = ({ modal, setModal, id, type }) => {
   function getVideoURL() {
     const videoURL = data.videos.results[0].key;
     if (videoURL) {
-      console.log(videoURL);
       return videoURL;
     }
   }

@@ -6,6 +6,7 @@ import Modal from "../Modal/Modal";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import { Wraper, Backdoor, Content, Cast } from "./styles";
 import { ReactComponent as Player } from "../../Assets/player.svg";
+import Midia from "./Midia";
 
 const SingleMovie = () => {
   const [modal, setModal] = useState(null);
@@ -21,7 +22,7 @@ const SingleMovie = () => {
 
   useEffect(() => {
     request(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}&language=pt-BR&append_to_response=release_dates,credits,videos,watch/providers`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}&language=pt-BR&append_to_response=release_dates,credits,videos,watch/providers,images&include_image_language=pt,en`
     );
   }, [id]);
 
@@ -215,6 +216,15 @@ const SingleMovie = () => {
           <div className="shadow"></div>
         </ul>
       </Cast>
+
+      <Midia
+        data={data}
+        loading={loading}
+        modal={modal}
+        setModal={setModal}
+        type={type}
+        id={id}
+      />
     </Fragment>
   );
 };
