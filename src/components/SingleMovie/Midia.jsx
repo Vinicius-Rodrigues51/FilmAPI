@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect } from "react";
 import Loading from "../../helper/Loading";
-import useFetch from "../../hooks/useFetch";
 import Modal from "../Modal/Modal";
 import { MidiaStyle } from "./MidiaStyle";
 
@@ -8,9 +7,11 @@ const Midia = ({ data, loading, modal, setModal, type, id }) => {
   let video;
 
   function getVideoURL() {
-    const videoURL = data.videos.results[0].key;
-    if (videoURL) {
-      return videoURL;
+    if (data.videos.results.length != 0) {
+      const videoURL = data.videos.results[0].key;
+      if (videoURL) {
+        return videoURL;
+      }
     }
   }
 

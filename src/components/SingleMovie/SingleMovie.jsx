@@ -37,7 +37,7 @@ const SingleMovie = () => {
   function getProviders() {
     const providers = data["watch/providers"].results.BR;
     const providersUS = data["watch/providers"].results.US;
-    if (providers) {
+    if (providers && providers.flatrate) {
       return providers.flatrate[0].logo_path;
     } else if (providersUS && providersUS.flatrate) {
       return providersUS.flatrate[0].logo_path;

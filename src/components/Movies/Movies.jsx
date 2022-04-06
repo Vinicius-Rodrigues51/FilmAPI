@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Container, GridContainer } from "./styles";
 import useFetch from "../../hooks/useFetch";
 import Loading from "../../helper/Loading";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Home = () => {
   const { data, request, loading, api_key } = useFetch();
