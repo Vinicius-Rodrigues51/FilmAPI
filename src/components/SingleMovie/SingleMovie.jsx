@@ -1,10 +1,10 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Loading from "../../helper/Loading";
 import useFetch from "../../hooks/useFetch";
 import Modal from "../Modal/Modal";
 import ProgressBar from "../ProgressBar/ProgressBar";
-import { Wraper, Backdoor, Content, Cast } from "./styles";
+import { Wraper, Backdoor, Content, Cast, Recomendations } from "./styles";
 import { ReactComponent as Player } from "../../Assets/player.svg";
 import Midia from "./Midia";
 
@@ -22,7 +22,7 @@ const SingleMovie = () => {
 
   useEffect(() => {
     request(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}&language=pt-BR&append_to_response=release_dates,credits,videos,watch/providers,images&include_image_language=pt,en`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}&language=pt-BR&append_to_response=release_dates,recommendations,credits,videos,watch/providers,images&include_image_language=pt,en`
     );
   }, [id]);
 
@@ -90,13 +90,17 @@ const SingleMovie = () => {
 
   function shadowScrollController(event) {
     const slider = document.querySelector(".shadow");
+    const recSlider = document.querySelector(".recShadow");
 
     slider.style.right = "-" + event.target.scrollLeft + "px";
+    recSlider.style.right = "-" + event.target.scrollLeft + "px";
     const sliderNum = event.target.scrollLeft;
     if (sliderNum > 80) {
       slider.style.opacity = 0;
+      recSlider.style.opacity = 0;
     } else {
       slider.style.opacity = 1;
+      recSlider.style.opacity = 1;
     }
   }
 
@@ -227,6 +231,36 @@ const SingleMovie = () => {
         type={type}
         id={id}
       />
+
+      <Recomendations>
+        <h1>Recomendações</h1>
+        <div className="items" onScroll={shadowScrollController}>
+          {data.recommendations.results.map((movie) => (
+            <ul className="recSlider" key={movie.id}>
+              <Link
+                to={`/movie/${movie.id}-${movie.original_title
+                  .split(" ")
+                  .join("-")}`}
+              >
+                <div className="image">
+                  <img
+                    src={`https://www.themoviedb.org/t/p/w250_and_h141_face${movie.backdrop_path}`}
+                  />
+                  <div className="details">
+                    <p>{movie.release_date.split("-").reverse().join("/")}</p>
+                  </div>
+                </div>
+              </Link>
+
+              <div className="title">
+                <h3>{movie.title}</h3>
+                <p>{movie.vote_average.toFixed(1) * 10}%</p>
+              </div>
+            </ul>
+          ))}
+          <div className="recShadow"></div>
+        </div>
+      </Recomendations>
     </Fragment>
   );
 };
