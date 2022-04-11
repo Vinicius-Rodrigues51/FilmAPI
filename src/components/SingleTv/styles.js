@@ -252,7 +252,7 @@ export const Cast = styled.div`
   max-width: 1320px;
   margin: 0 auto;
   margin-top: 30px;
-  padding-bottom: 200px;
+  margin-bottom: 30px;
 
   &::-webkit-scrollbar-thumb {
     background-color: rgb(227, 227, 227);
@@ -335,5 +335,97 @@ export const Cast = styled.div`
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     width: 140px;
+  }
+`;
+
+export const Recomendations = styled.div`
+  max-width: 1320px;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 100px;
+  position: relative;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(227, 227, 227);
+    border-radius: 20px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #fff;
+  }
+
+  h1 {
+    margin-bottom: 30px;
+  }
+
+  .items {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 20px;
+      background-color: rgb(219, 219, 219);
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    img {
+      border-radius: 10px;
+    }
+
+    .image {
+      position: relative;
+      cursor: pointer;
+
+      &:hover .details {
+        opacity: 1;
+      }
+    }
+
+    .details {
+      position: absolute;
+      bottom: 5px;
+      left: 0px;
+      background-color: rgba(255, 255, 255, 0.8);
+      width: 100%;
+      padding: 8px;
+      color: #000;
+      opacity: 0;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      transition: opacity 0.2s ease-in-out;
+    }
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 2px;
+      align-items: center;
+    }
+
+    .recShadow {
+      content: "";
+      width: 60px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-image: linear-gradient(
+        to right,
+        transparent 0%,
+        ${(props) => props.theme.colors.background} 100%
+      );
+      will-change: opacity;
+      pointer-events: none;
+      transition: opacity linear 0.3s;
+    }
   }
 `;

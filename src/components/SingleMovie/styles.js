@@ -405,7 +405,7 @@ export const Recomendations = styled.div`
 
     .details {
       position: absolute;
-      bottom: 0px;
+      bottom: 5px;
       left: 0px;
       background-color: rgba(255, 255, 255, 0.8);
       width: 100%;

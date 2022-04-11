@@ -1,11 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Loading from "../../helper/Loading";
 import useFetch from "../../hooks/useFetch";
 import Modal from "../Modal/Modal";
 import ProgressBar from "../ProgressBar/ProgressBar";
-import { Wraper, Backdoor, Content, Cast } from "./styles";
+import { Wraper, Backdoor, Content, Cast, Recomendations } from "./styles";
 import { ReactComponent as Player } from "../../Assets/player.svg";
+import Midia from "./Midia";
+import ActualSeason from "./ActualSeason";
 
 const SingleTv = () => {
   const [modal, setModal] = useState(null);
@@ -19,7 +21,7 @@ const SingleTv = () => {
 
   useEffect(() => {
     request(
-      `https://api.themoviedb.org/3/tv/${id}?api_key=${api_key}&language=pt-BR&append_to_response=content_ratings,credits,videos,watch/providers`
+      `https://api.themoviedb.org/3/tv/${id}?api_key=${api_key}&language=pt-BR&append_to_response=content_ratings,recommendations,credits,videos,watch/providers,images&include_image_language=pt,en`
     );
   }, [id]);
 
@@ -174,6 +176,45 @@ const SingleTv = () => {
           <div className="shadow"></div>
         </ul>
       </Cast>
+
+      <ActualSeason data={data} />
+
+      <Midia
+        data={data}
+        loading={loading}
+        modal={modal}
+        setModal={setModal}
+        type={type}
+        id={id}
+      />
+
+      <Recomendations>
+        <h1>Recomendações</h1>
+        <div className="items" onScroll={shadowScrollController}>
+          {data.recommendations.results.map((tv) => (
+            <ul className="recSlider" key={tv.id}>
+              <Link
+                to={`/tv/${tv.id}-${tv.original_name.split(" ").join("-")}`}
+              >
+                <div className="image">
+                  <img
+                    src={`https://www.themoviedb.org/t/p/w250_and_h141_face${tv.backdrop_path}`}
+                  />
+                  <div className="details">
+                    <p>{tv.first_air_date.split("-").reverse().join("/")}</p>
+                  </div>
+                </div>
+              </Link>
+
+              <div className="title">
+                <h3>{tv.original_name}</h3>
+                <p>{tv.vote_average.toFixed(1) * 10}%</p>
+              </div>
+            </ul>
+          ))}
+          <div className="recShadow"></div>
+        </div>
+      </Recomendations>
     </Fragment>
   );
 };
