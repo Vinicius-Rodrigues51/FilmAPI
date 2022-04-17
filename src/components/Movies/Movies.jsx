@@ -4,7 +4,7 @@ import useFetch from "../../hooks/useFetch";
 import Loading from "../../helper/Loading";
 import { Link, useParams } from "react-router-dom";
 
-const Home = () => {
+const Movies = () => {
   const { data, request, loading, api_key } = useFetch();
   const [page, setPage] = useState(1);
 
@@ -61,4 +61,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Movies;

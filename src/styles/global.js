@@ -6,7 +6,12 @@ export default createGlobalStyle`
      padding: 0;
      box-sizing: border-box;
      font-family: 'Source Sans Pro', sans-serif;
+     
  }
+
+ :root {
+    --tmdbDarkBlue: 3, 37, 65;
+  }
 
  body {
      background: ${(props) => props.theme.colors.background};

@@ -63,7 +63,6 @@ const SingleTv = () => {
 
   if (data) {
     age = getAge();
-    // characters = getCharacters();
     cast = getCast();
     provider = getProviders();
     isVideos = isVideo();

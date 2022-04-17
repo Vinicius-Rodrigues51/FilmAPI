@@ -26,15 +26,16 @@ const Header = ({ toggleTheme }) => {
 
       <nav>
         <ul>
+          <Link to={"/search"}>
+            <li>Pesquisar</li>
+          </Link>
           <Link to={"/movie"}>
             <li>Filmes</li>
           </Link>
           <Link to={"/tv"}>
             <li>Series</li>
           </Link>
-          <a href="#">
-            <li>Pesquisar</li>
-          </a>
+
           <label htmlFor="Switch">
             <img src={isLight()} />
           </label>

@@ -4,7 +4,6 @@ import { SeasonStyled } from "./ActualSeasonStyle";
 const ActualSeason = ({ data }) => {
   const lastSeasonIndex = data.seasons.length - 1;
   const lastSeason = data.seasons[lastSeasonIndex];
-  console.log(lastSeason);
   const monthNumber = +lastSeason.air_date.substr(5, 2);
 
   function getMonth(month) {
