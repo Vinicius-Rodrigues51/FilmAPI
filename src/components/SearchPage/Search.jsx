@@ -20,6 +20,7 @@ const Search = () => {
   const submitRef = useRef();
   let movieFilter;
   let tvFilter;
+  let buscaValue;
 
   function getMonth(month) {
     switch (month) {
@@ -66,7 +67,6 @@ const Search = () => {
     setBusca(submitRef.current.value);
     const buscaFormatada = busca.split(" ").join("-");
     if (busca != "") {
-      console.log(buscaFormatada);
       request(
         `https://api.themoviedb.org/3/search/multi?api_key=${api_key}&language=pt-BR&page=1&include_adult=false&query=${buscaFormatada}`
       );
@@ -112,6 +112,16 @@ const Search = () => {
     });
   }, [data]);
 
+  useEffect(() => {
+    if (busca !== "") {
+      const buscaFormatada = busca.split(" ").join("-");
+
+      request(
+        `https://api.themoviedb.org/3/search/multi?api_key=${api_key}&language=pt-BR&page=1&include_adult=false&query=${buscaFormatada}`
+      );
+    }
+  }, []);
+
   if (loading) return <Loading />;
   return (
     <Fragment>
@@ -126,7 +136,7 @@ const Search = () => {
               placeholder="Busque seus filmes e series favoritos"
               ref={submitRef}
               onChange={() => setBusca(submitRef.current.value)}
-              value={busca}
+              value={buscaValue}
             />
           </div>
         </form>
