@@ -136,7 +136,7 @@ const Search = () => {
               placeholder="Busque seus filmes e series favoritos"
               ref={submitRef}
               onChange={() => setBusca(submitRef.current.value)}
-              value={buscaValue}
+              value={busca}
             />
           </div>
         </form>
