@@ -20,7 +20,6 @@ const Search = () => {
   const submitRef = useRef();
   let movieFilter;
   let tvFilter;
-  let buscaValue;
 
   function getMonth(month) {
     switch (month) {
@@ -76,7 +75,6 @@ const Search = () => {
   if (data) {
     movieFilter = data.results.filter((movie) => movie.media_type === "movie");
     tvFilter = data.results.filter((tv) => tv.media_type === "tv");
-    console.log(tvFilter);
   }
 
   function isTrue() {

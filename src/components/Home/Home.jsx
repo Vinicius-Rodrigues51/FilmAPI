@@ -3,6 +3,7 @@ import useFetch from "../../hooks/useFetch";
 import { Container } from "./style";
 import { userContext } from "../../UserContext";
 import { useNavigate } from "react-router-dom";
+import Trendings from "./Trendings";
 
 const Home = () => {
   const { request, loading, data, api_key } = useFetch();
@@ -49,6 +50,8 @@ const Home = () => {
           </div>
         </div>
       </Container>
+
+      <Trendings />
     </Fragment>
   );
 };
