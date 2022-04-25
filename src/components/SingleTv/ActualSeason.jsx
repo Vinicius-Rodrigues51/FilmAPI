@@ -3,7 +3,13 @@ import { SeasonStyled } from "./ActualSeasonStyle";
 
 const ActualSeason = ({ data }) => {
   const lastSeasonIndex = data.seasons.length - 1;
-  const lastSeason = data.seasons[lastSeasonIndex];
+  const seasonIndex = data.seasons.length - 2;
+  let lastSeason;
+  if (data.seasons[lastSeasonIndex].air_date !== null) {
+    lastSeason = data.seasons[lastSeasonIndex];
+  } else {
+    lastSeason = data.seasons[seasonIndex];
+  }
   const monthNumber = +lastSeason.air_date.substr(5, 2);
 
   function getMonth(month) {

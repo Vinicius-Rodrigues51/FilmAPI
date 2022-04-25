@@ -1,31 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import { Button, Container, GridContainer } from "./styles";
 import useFetch from "../../hooks/useFetch";
 import Loading from "../../helper/Loading";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { userContext } from "../../UserContext";
 
 const Movies = () => {
   const { data, request, loading, api_key } = useFetch();
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1);
+  const { Moviepage, setMoviePage } = useContext(userContext);
 
   const prevPage = () => {
-    if (page > 1) {
-      setPage(page - 1);
+    if (Moviepage > 1) {
+      setMoviePage(Moviepage - 1);
     }
   };
 
   const nextPage = () => {
     const { total_pages } = data;
-    if (page < total_pages) {
-      setPage(page + 1);
+    if (Moviepage < total_pages) {
+      setMoviePage(Moviepage + 1);
     }
   };
 
   useEffect(() => {
     request(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=pt-BR&page=${page}`
+      `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=pt-BR&page=${Moviepage}`
     );
-  }, [page]);
+  }, [Moviepage]);
 
   if (loading) return <Loading />;
   if (data === null) return null;

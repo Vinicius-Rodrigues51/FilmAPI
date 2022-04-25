@@ -58,29 +58,41 @@ export const Container = styled.div`
   }
 
   .singleActor {
-    width: 140px;
+    width: 150px;
     margin-bottom: 20px;
     background: ${(props) => props.theme.colors.background};
     color: ${(props) => props.theme.colors.text};
     border-radius: 7px;
-    box-shadow: 1px 2px 13px -5px #000000;
   }
 
   .castIMG {
-    width: 140px;
-    height: 177px;
+    width: 150px;
+    height: 225px;
     background-color: rgb(224, 224, 224);
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
+    border-radius: 6px;
+
+    img {
+      width: 100%;
+      border-radius: 6px;
+    }
   }
 
   .castDet {
     margin: 10px;
     font-size: 16px;
 
+    a {
+      display: inline-block;
+    }
+
     h3 {
       font-weight: bold;
-      font-size: 18px;
+      font-size: 16px;
+      color: #333;
+
+      &:hover {
+        color: rgb(1, 180, 228);
+      }
     }
   }
 

@@ -178,7 +178,10 @@ const SingleMovie = () => {
 
               <p className="tagline">{data.tagline}</p>
               <h1>Sinopse</h1>
-              <p className="overview">{data.overview}</p>
+              <p className="overview">
+                {data.overview.substr(0, 700)}{" "}
+                {data.overview.length > 700 ? "..." : ""}
+              </p>
 
               <div className="credits">
                 {crew.map((member) => (
