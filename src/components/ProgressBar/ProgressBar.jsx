@@ -38,7 +38,7 @@ const ProgressBar = ({ data }) => {
   return (
     <ProgressBars className="circular-progress">
       <div className="value-container">
-        <span className="value">{data * 10}</span>
+        <span className="value">{data}</span>
       </div>
     </ProgressBars>
   );

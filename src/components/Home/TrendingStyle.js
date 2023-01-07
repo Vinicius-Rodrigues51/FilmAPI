@@ -88,7 +88,7 @@ export const Container = styled.div`
     h3 {
       font-weight: bold;
       font-size: 16px;
-      color: #333;
+      color: ${(props) => props.theme.colors.text};
 
       &:hover {
         color: rgb(1, 180, 228);

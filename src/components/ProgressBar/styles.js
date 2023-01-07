@@ -21,7 +21,7 @@ export const ProgressBars = styled.div`
   .value-container {
     position: relative;
     color: #fff;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
     z-index: 3;
   }
@@ -31,7 +31,7 @@ export const ProgressBars = styled.div`
     &::after {
       content: "%";
       position: relative;
-      font-size: 14px;
+      font-size: 13px;
       top: -6px;
       font-weight: bold;
     }
