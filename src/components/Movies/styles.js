@@ -47,6 +47,28 @@ export const GridContainer = styled.ul`
     color: ${(props) => props.theme.colors.text};
   }
 
+  @media (max-width: 1200px) {
+    .imgBox {
+      width: 300px;
+      height: 425px;
+    }
+  }
+
+  @media (max-width: 748px) {
+    .imgBox {
+      width: 300px;
+      height: 425px;
+      margin-bottom: 0;
+      margin: auto;
+    }
+
+    img {
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+
   @media (max-width: 800px) {
     padding: 0 20px;
 

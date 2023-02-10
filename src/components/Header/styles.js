@@ -18,7 +18,6 @@ export const Container = styled.div`
     padding: 5px 10px;
     align-items: center;
     background: transparent;
-    border: 1px solid white;
     border-radius: 5px;
     transition: background-color 0.3s ease-in-out;
 

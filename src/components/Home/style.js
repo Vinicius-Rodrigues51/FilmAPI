@@ -71,4 +71,8 @@ export const Container = styled.div`
       }
     }
   }
+
+  /* @media (max-width: 820px) {
+    
+  } */
 `;

@@ -59,6 +59,41 @@ export const GridContainer = styled.ul`
       display: block;
     }
   }
+
+  @media (max-width: 1200px) {
+    .imgBox {
+      width: 300px;
+      height: 425px;
+    }
+  }
+
+  @media (max-width: 748px) {
+    .imgBox {
+      width: 300px;
+      height: 425px;
+      margin-bottom: 0;
+      margin: auto;
+    }
+
+    img {
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    padding: 0 20px;
+
+    img {
+      width: 250px;
+      height: auto;
+    }
+
+    a:nth-child(2) {
+      display: block;
+    }
+  }
 `;
 
 export const Button = styled.button`
