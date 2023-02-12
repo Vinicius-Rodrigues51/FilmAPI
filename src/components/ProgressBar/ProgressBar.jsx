@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { ProgressBars } from "./styles";
 
 const ProgressBar = ({ data }) => {
+  const data2 = Math.round(data);
   useEffect(() => {
     let bar = document.querySelector(".circular-progress");
 
@@ -38,7 +39,7 @@ const ProgressBar = ({ data }) => {
   return (
     <ProgressBars className="circular-progress">
       <div className="value-container">
-        <span className="value">{data}</span>
+        <span className="value">{data2 * 10}</span>
       </div>
     </ProgressBars>
   );
