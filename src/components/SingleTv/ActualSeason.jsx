@@ -72,12 +72,9 @@ const ActualSeason = ({ data }) => {
             </h3>
 
             <p>
-              A {lastSeason.season_number}ª temporada de {data.original_name}
-              começou a ser exibida em {lastSeason.air_date.substr(
-                8,
-                2
-              )} de {getMonth(monthNumber)} de{" "}
-              {lastSeason.air_date.substr(0, 4)}.
+              A {lastSeason.season_number}ª temporada de {data.name} começou a
+              ser exibida em {lastSeason.air_date.substr(8, 2)} de{" "}
+              {getMonth(monthNumber)} de {lastSeason.air_date.substr(0, 4)}.
             </p>
           </div>
         </div>

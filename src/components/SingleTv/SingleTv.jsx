@@ -206,7 +206,7 @@ const SingleTv = () => {
               </Link>
 
               <div className="title">
-                <h3>{tv.original_name}</h3>
+                <h3>{tv.name}</h3>
                 <p>{tv.vote_average.toFixed(1) * 10}%</p>
               </div>
             </ul>

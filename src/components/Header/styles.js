@@ -48,4 +48,8 @@ export const Container = styled.div`
       width: 25px;
     }
   }
+
+  @media (max-width: 760px) {
+    
+  }
 `;
