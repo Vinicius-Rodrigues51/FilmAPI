@@ -14,7 +14,7 @@ export const Backdoor = styled.div`
   background: linear-gradient(
     to right,
     rgba(31.5, 31.5, 31.5, 1) 150px,
-    rgba(31.5, 31.5, 31.5, 0.84) 100%
+    rgba(31.5, 31.5, 31.5, 0.6) 100%
   );
 `;
 
