@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { ProgressBars } from "./styles";
 
 const ProgressBar = ({ data }) => {
-  // const data2 = Math.round(data);
+  // const data2 = Math.round(data)
   useEffect(() => {
     let bar = document.querySelector(".circular-progress");
 
