@@ -24,6 +24,7 @@ const SingleMovie = () => {
     request(
       `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}&language=pt-BR&append_to_response=release_dates,recommendations,credits,videos,watch/providers,images&include_image_language=pt,en`
     );
+    console.log(data);
   }, [id]);
 
   function isVideo() {
@@ -165,7 +166,7 @@ const SingleMovie = () => {
               </div>
 
               <div className="trailer">
-                <ProgressBar data={data.vote_average.toFixed(2)} />
+                <ProgressBar data={data.vote_average.toFixed(1)} />
                 {isVideos && (
                   <div className="player" onClick={() => setModal(true)}>
                     <Player className="svg" />
