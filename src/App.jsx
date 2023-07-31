@@ -13,6 +13,7 @@ import SingleTv from "./components/SingleTv/SingleTv";
 import Search from "./components/SearchPage/Search";
 import { SearchedValue } from "./UserContext";
 import Home from "./components/Home/Home";
+import Login from "./components/Login/Login";
 
 function App() {
   const [theme, setTheme] = usePersistedState("theme", light);
@@ -29,6 +30,7 @@ function App() {
           <Header toggleTheme={toggleTheme} />
           <Routes>
             <Route path={"/"} element={<Home />} />
+            <Route path={"/login*"} element={<Login />} />
             <Route path={"/movie"} element={<Movies />} />
             <Route path={"/tv"} element={<Series />} />
             <Route path={"/movie/:id"} element={<SingleMovie />} />

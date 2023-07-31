@@ -35,6 +35,9 @@ const Header = ({ toggleTheme }) => {
           <Link to={"/tv"}>
             <li>Series</li>
           </Link>
+          <Link to={"/login"}>
+            <li>Login</li>
+          </Link>
 
           <label htmlFor="Switch">
             <img src={isLight()} />

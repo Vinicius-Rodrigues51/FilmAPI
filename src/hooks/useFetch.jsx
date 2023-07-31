@@ -4,16 +4,16 @@ const useFetch = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const api_key = "f398a63832c36971f74d5733ee6b5625";
+  const api_key = "90235d9c3f219018a6e7604b6b6f6267";
 
-  const request = useCallback(async (url) => {
+  const request = useCallback(async (url, options) => {
     let response;
     let json;
     try {
       setLoading(true);
       setError(null);
 
-      response = await fetch(url);
+      response = await fetch(url, options);
       json = await response.json();
 
       if (response.ok === false) {

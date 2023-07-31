@@ -135,7 +135,7 @@ const SingleTv = () => {
               </div>
 
               <div className="trailer">
-                <ProgressBar data={data.vote_average.toFixed(2)} />
+                <ProgressBar data={data.vote_average.toFixed(1)} />
                 {isVideos && (
                   <div className="player" onClick={() => setModal(true)}>
                     <Player className="svg" />
