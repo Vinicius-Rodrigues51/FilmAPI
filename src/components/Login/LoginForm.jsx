@@ -54,7 +54,7 @@ const LoginForm = () => {
     //     `https://www.themoviedb.org/authenticate/${REQUEST_TOKEN}?redirect_to=http://http://localhost:3000/login/approved`
     //   );
     // }
-    console.log(REQUEST_TOKEN);
+    // console.log(REQUEST_TOKEN);
 
     // handleLogin();
   }
