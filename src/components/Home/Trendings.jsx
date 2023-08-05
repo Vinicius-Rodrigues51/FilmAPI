@@ -2,9 +2,11 @@ import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { Container } from "./TrendingStyle";
+import { useState } from "react";
 
 const Trendings = () => {
   const { api_key, data, request } = useFetch();
+  const [period, setPeriod] = useState("day");
 
   function getMonth(month) {
     switch (month) {
@@ -48,8 +50,35 @@ const Trendings = () => {
 
   useEffect(() => {
     request(`
-      https://api.themoviedb.org/3/trending/all/week?api_key=${api_key}&language=pt-BR&page=1`);
-  }, []);
+      https://api.themoviedb.org/3/trending/all/${period}?api_key=${api_key}&language=pt-BR&page=1`);
+
+    const tabItems = document.querySelectorAll(".selector .anchor");
+
+    function removeActiveClass() {
+      tabItems.forEach((item) => {
+        item.classList.remove("selected");
+      });
+    }
+
+    function selectItem(e) {
+      e.preventDefault();
+      removeActiveClass();
+
+      this.classList.add("selected");
+
+      const tabShow = document.querySelector(`#${this.id}`);
+      setPeriod(tabShow.id);
+      console.log(tabShow.id);
+
+      // tabShow.classList.add("show");
+    }
+
+    tabItems.forEach((item) => {
+      item.addEventListener("click", selectItem);
+    });
+
+    console.log(tabItems);
+  }, [period]);
 
   function shadowScrollController(event) {
     const slider = document.querySelector(".shadow");
@@ -67,7 +96,23 @@ const Trendings = () => {
   return (
     <Fragment>
       <Container>
-        <h1>Em alta</h1>
+        <div className="column_header">
+          <h1>Tendências</h1>
+          <div className="selector_wrap">
+            <div className="selector">
+              <div id="day" className={`anchor selected`}>
+                <h3>
+                  <a id="day">Hoje</a>
+                </h3>
+              </div>
+              <div id="week" className={`anchor`}>
+                <h3>
+                  <a id="week">Esta Semana</a>
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <ul className="castSlider" onScroll={shadowScrollController}>
           {data.results.map((film) => (

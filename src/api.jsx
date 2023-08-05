@@ -31,6 +31,32 @@ export function Create_Access_Token(body) {
   };
 }
 
+export function Get_User_List(id) {
+  return {
+    url: `https://api.themoviedb.org/4/account/${id}/lists`,
+    options: {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${api_key}`,
+      },
+    },
+  };
+}
+
+export function Account_Details(id) {
+  return {
+    url: `https://api.themoviedb.org/3/account/${id}`,
+    options: {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${api_key}`,
+      },
+    },
+  };
+}
+
 ///////////////////////////////////////////////////////////API DOGS//////////////////////////////////////////////////////////////////////////
 
 export const API_URL = "https://dogsapi.origamid.dev/json";

@@ -11,6 +11,8 @@ const ProgressBar = ({ data }) => {
         return "21d07a";
       } else if (value >= 4) {
         return "d2d531";
+      } else if (value == 0) {
+        return "666666";
       } else {
         return "db2360";
       }
@@ -21,6 +23,8 @@ const ProgressBar = ({ data }) => {
         return "204529";
       } else if (value >= 4) {
         return "423d0f";
+      } else if (value == 0) {
+        return "d4d4d4";
       } else {
         return "571435";
       }

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  max-width: 1320px;
+  /* max-width: 1820px; */
   margin: 0 auto;
 
   .background {
@@ -18,6 +18,8 @@ export const Container = styled.div`
     color: #fff;
     padding: 30px 40px;
     width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
 
     h2 {
       font-weight: 600;

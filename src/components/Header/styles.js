@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   height: 60px;
-  background: ${(props) => props.theme.colors.primary};
+  /* background: ${(props) => props.theme.colors.primary}; */
+  background: rgb(3, 37, 65);
   color: #fff;
   display: flex;
   align-items: center;
@@ -20,11 +21,6 @@ export const Container = styled.div`
     background: transparent;
     border-radius: 5px;
     transition: background-color 0.3s ease-in-out;
-
-    &:hover {
-      background: white;
-      color: #c62e65;
-    }
   }
 
   ul {
@@ -50,6 +46,5 @@ export const Container = styled.div`
   }
 
   @media (max-width: 760px) {
-    
   }
 `;

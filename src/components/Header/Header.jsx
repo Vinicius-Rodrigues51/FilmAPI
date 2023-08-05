@@ -5,10 +5,25 @@ import { ThemeContext } from "styled-components";
 import { shade, tint } from "polished"; // pega a cor utilizada e usa tons de preto com Shade & de branco com Tin
 import sun from "../../Assets/sun.png";
 import moon from "../../Assets/moon.png";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { userContext } from "../../UserContext";
+import useFetch from "../../hooks/useFetch";
+import { Account_Details } from "../../api";
+import { useEffect } from "react";
 
 const Header = ({ toggleTheme }) => {
   const { colors, title } = useContext(ThemeContext); // Puxando o contexto global do theme
+  const user = localStorage.getItem("user_login_token");
+  const { login } = useContext(userContext);
+  const { request, data } = useFetch();
+  const id = useParams();
+
+  useEffect(() => {
+    const { url, options } = Account_Details(id);
+
+    request(url, options);
+    console.log(data);
+  }, [login]);
 
   function isLight() {
     if (title === "light") {
@@ -18,10 +33,11 @@ const Header = ({ toggleTheme }) => {
     }
   }
 
+  if (data === null) return null;
   return (
     <Container>
       <Link to={"/"}>
-        <h2>Film World</h2>
+        <h2>Movie World</h2>
       </Link>
 
       <nav>
@@ -35,9 +51,22 @@ const Header = ({ toggleTheme }) => {
           <Link to={"/tv"}>
             <li>Series</li>
           </Link>
-          <Link to={"/login"}>
-            <li>Login</li>
-          </Link>
+          {user ? (
+            <Link to={`/conta/${user}`}>
+              <li>{data.username}</li>
+            </Link>
+          ) : (
+            false
+          )}
+          {user ? (
+            <Link to={"/logout"}>
+              <li>Sair</li>
+            </Link>
+          ) : (
+            <Link to={"/login"}>
+              <li>Login</li>
+            </Link>
+          )}
 
           <label htmlFor="Switch">
             <img src={isLight()} />

@@ -8,7 +8,7 @@ export const Container = styled.section`
 
   form {
     margin-top: 50px;
-    text-align: left;
+    /* text-align: left; */
   }
 
   input {
