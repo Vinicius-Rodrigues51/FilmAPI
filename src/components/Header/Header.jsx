@@ -22,7 +22,7 @@ const Header = ({ toggleTheme }) => {
     const { url, options } = Account_Details(id);
 
     request(url, options);
-    console.log(data);
+    // console.log(data);
   }, [login]);
 
   function isLight() {

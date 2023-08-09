@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   max-width: 1820px;
-  background-image: url("https://www.themoviedb.org/assets/2/v4/misc/trending-bg-39afc2a5f77e31d469b25c187814c0a2efef225494c038098d62317d923f8415.svg");
+  /* background-image: url("https://www.themoviedb.org/assets/2/v4/misc/trending-bg-39afc2a5f77e31d469b25c187814c0a2efef225494c038098d62317d923f8415.svg"); */
   background-position: 0% 200px;
   background-size: 1400px;
   background-repeat: no-repeat;
@@ -30,6 +30,10 @@ export const Container = styled.div`
     margin: 20px 0;
     padding: 0 10px;
     position: relative;
+    background-image: url("https://www.themoviedb.org/assets/2/v4/misc/trending-bg-39afc2a5f77e31d469b25c187814c0a2efef225494c038098d62317d923f8415.svg");
+    background-position: 0% 160px;
+    background-size: 1400px;
+    background-repeat: no-repeat;
 
     &::-webkit-scrollbar {
       height: 8px;
@@ -69,6 +73,9 @@ export const Container = styled.div`
     background: ${(props) => props.theme.colors.background};
     color: ${(props) => props.theme.colors.text};
     border-radius: 7px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e3e3e3;
+    transition: opacity linear 0.9s;
   }
 
   .castIMG {
@@ -76,6 +83,7 @@ export const Container = styled.div`
     height: 225px;
     background-color: rgb(224, 224, 224);
     border-radius: 6px;
+    position: relative;
 
     img {
       width: 100%;
@@ -84,7 +92,7 @@ export const Container = styled.div`
   }
 
   .castDet {
-    margin: 10px;
+    margin: 20px 10px;
     font-size: 16px;
 
     a {

@@ -1,0 +1,51 @@
+import React, { useEffect, useRef } from "react";
+import { ProgressBars } from "./styles";
+
+const MultiProgressBar = (data) => {
+  let bar = useRef();
+
+  useEffect(() => {
+    function getColor(value) {
+      if (value >= 7) {
+        return "21d07a";
+      } else if (value >= 4) {
+        return "d2d531";
+      } else if (value == 0) {
+        return "666666";
+      } else {
+        return "db2360";
+      }
+    }
+
+    function getSecondColor(value) {
+      if (value >= 7) {
+        return "204529";
+      } else if (value >= 4) {
+        return "423d0f";
+      } else if (value == 0) {
+        return "d4d4d4";
+      } else {
+        return "571435";
+      }
+    }
+
+    const color1 = getColor(data.data);
+    const color2 = getSecondColor(data.data);
+
+    bar.current.style.background = `conic-gradient(
+                #${color1} ${data.data * 10 * 3.6}deg,
+                #${color2} ${data.data * 10 * 3.6}deg
+            )`;
+  }, [data.data]);
+
+  if (data.data == null) return null;
+  return (
+    <ProgressBars ref={bar} className="circular-progress">
+      <div className="value-container">
+        <span className="value">{data.data * 10}</span>
+      </div>
+    </ProgressBars>
+  );
+};
+
+export default MultiProgressBar;

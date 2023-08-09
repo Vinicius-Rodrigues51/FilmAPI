@@ -20,12 +20,15 @@ export const Container = styled.div`
 
 export const GridContainer = styled.ul`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  /* grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   row-gap: 50px;
 
   .imgBox {
-    width: 350px;
-    height: 525px;
+    width: 250px;
+    height: 370px;
+    /* width: 350px;
+    height: 525px; */
     border-radius: 12px;
     overflow: hidden;
     margin: 0 auto;
