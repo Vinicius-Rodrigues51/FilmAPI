@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { SeasonStyled } from "./ActualSeasonStyle";
+import no_image from "../../Assets/no_image.svg";
 
 const ActualSeason = ({ data }) => {
   const lastSeasonIndex = data.seasons.length - 1;
@@ -59,10 +60,19 @@ const ActualSeason = ({ data }) => {
 
         <div className="seasonCard">
           <div className="image">
-            <img
+            {/* <img
               src={`https://www.themoviedb.org/t/p/w130_and_h195_bestv2${lastSeason.poster_path}`}
               alt={`Poster da ${lastSeason.name}`}
             />
+            <img src={no_image} alt={`Poster da ${lastSeason.name}`} /> */}
+            {lastSeason.poster_path ? (
+              <img
+                src={`https://www.themoviedb.org/t/p/w130_and_h195_bestv2${lastSeason.poster_path}`}
+                alt={`Poster da ${lastSeason.name}`}
+              />
+            ) : (
+              <img src={no_image} alt={`Poster da ${lastSeason.name}`} />
+            )}
           </div>
           <div className="details">
             <h2>{lastSeason.name}</h2>

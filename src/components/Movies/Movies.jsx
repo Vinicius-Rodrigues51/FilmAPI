@@ -4,6 +4,7 @@ import useFetch from "../../hooks/useFetch";
 import Loading from "../../helper/Loading";
 import { Link } from "react-router-dom";
 import { userContext } from "../../UserContext";
+import no_image from "../../Assets/no_image.svg";
 
 const Movies = () => {
   const { data, request, loading, api_key } = useFetch();
@@ -38,16 +39,24 @@ const Movies = () => {
       <GridContainer>
         {data.results.map((film) => (
           <li key={film.id}>
-            <div className="imgBox">
+            <div style={{ background: "#d4d4d4" }} className="imgBox">
               <Link
                 to={`/movie/${film.id}-${film.original_title
                   .split(" ")
                   .join("-")}`}
               >
-                <img
-                  src={`https://image.tmdb.org/t/p/w400${film.poster_path}`}
-                  alt={film.title}
-                />
+                {film.poster_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w400${film.poster_path}`}
+                    alt={film.name}
+                  />
+                ) : (
+                  <img
+                    style={{ height: "180px" }}
+                    src={no_image}
+                    alt={film.name}
+                  />
+                )}
               </Link>
             </div>
             <h3>{film.title}</h3>

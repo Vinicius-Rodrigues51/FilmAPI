@@ -8,8 +8,6 @@ import { Wraper, Backdoor, Content, Cast, Recomendations } from "./styles";
 import { ReactComponent as Player } from "../../Assets/player.svg";
 import Midia from "./Midia";
 import no_image from "../../Assets/no_image.svg";
-import { borderRadius } from "polished";
-console.log(no_image);
 
 const SingleMovie = () => {
   const [modal, setModal] = useState(null);

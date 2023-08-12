@@ -3,6 +3,7 @@ import { Button, Container, GridContainer } from "./styles";
 import useFetch from "../../hooks/useFetch";
 import Loading from "../../helper/Loading";
 import { Link } from "react-router-dom";
+import no_image from "../../Assets/no_image.svg";
 
 const Series = () => {
   const { data, request, loading, api_key } = useFetch();
@@ -36,12 +37,20 @@ const Series = () => {
       <GridContainer>
         {data.results.map((tv) => (
           <li key={tv.id}>
-            <div className="imgBox">
+            <div style={{ background: "#d4d4d4" }} className="imgBox">
               <Link to={`${tv.id}-${tv.original_name.split(" ").join("-")}`}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w400${tv.poster_path}`}
-                  alt={tv.name}
-                />
+                {tv.poster_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w400${tv.poster_path}`}
+                    alt={tv.name}
+                  />
+                ) : (
+                  <img
+                    style={{ height: "180px" }}
+                    src={no_image}
+                    alt={tv.name}
+                  />
+                )}
               </Link>
             </div>
             <h3>{tv.name}</h3>

@@ -8,6 +8,7 @@ import { Wraper, Backdoor, Content, Cast, Recomendations } from "./styles";
 import { ReactComponent as Player } from "../../Assets/player.svg";
 import Midia from "./Midia";
 import ActualSeason from "./ActualSeason";
+import no_image from "../../Assets/no_image.svg";
 
 const SingleTv = () => {
   const [modal, setModal] = useState(null);
@@ -94,12 +95,28 @@ const SingleTv = () => {
         <Backdoor>
           <Content>
             <div className="box">
-              <div className="zoom">
-                <img
-                  src={`https://image.tmdb.org/t/p/w400${data.poster_path}`}
-                  alt={`Poster do filme ${data.title}`}
-                />
+              <div
+                className="zoom"
+                style={
+                  data.poster_path
+                    ? { backgroundColor: "" }
+                    : {
+                        backgroundColor: "#dbdbdb",
+                        borderRadius: "6px",
+                        height: "100%",
+                      }
+                }
+              >
+                {data.poster_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w400${data.poster_path}`}
+                    alt={`Poster do filme ${data.title}`}
+                  />
+                ) : (
+                  <img style={{ height: "180px" }} src={no_image} />
+                )}
               </div>
+
               {provider && (
                 <div className="content">
                   <div className="provider">
@@ -196,9 +213,20 @@ const SingleTv = () => {
                 to={`/tv/${tv.id}-${tv.original_name.split(" ").join("-")}`}
               >
                 <div className="image">
-                  <img
-                    src={`https://www.themoviedb.org/t/p/w250_and_h141_face${tv.backdrop_path}`}
-                  />
+                  {tv.backdrop_path ? (
+                    <img
+                      src={`https://www.themoviedb.org/t/p/w250_and_h141_face${tv.backdrop_path}`}
+                    />
+                  ) : (
+                    <img
+                      style={{
+                        height: "141px",
+                        width: "250px",
+                        backgroundColor: "#d4d4d4",
+                      }}
+                      src={no_image}
+                    />
+                  )}
                   <div className="details">
                     <p>{tv.first_air_date.split("-").reverse().join("/")}</p>
                   </div>

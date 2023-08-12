@@ -21,7 +21,6 @@ export const SeasonStyled = styled.div`
       border-bottom-left-radius: 7px;
       width: 130px;
       height: 195px;
-      /* overflow: hidden; */
       img {
         width: 130px;
         height: 195px;

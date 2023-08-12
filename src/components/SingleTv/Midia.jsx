@@ -110,7 +110,7 @@ const Midia = ({ data, loading, modal, setModal, type, id }) => {
               key={image.file_path}
             >
               <img
-                src={`https://image.tmdb.org/t/p/w533_and_h300_multi_faces${image.file_path}`}
+                src={`https://image.tmdb.org/t/p/w220_and_h330_multi_faces${image.file_path}`}
                 alt=""
               />
             </div>

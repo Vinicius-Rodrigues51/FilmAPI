@@ -20,16 +20,19 @@ export const Container = styled.div`
 
 export const GridContainer = styled.ul`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   row-gap: 50px;
 
   .imgBox {
-    width: 350px;
-    height: 525px;
+    width: 250px;
+    height: 370px;
     border-radius: 12px;
     overflow: hidden;
     margin: 0 auto;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   img {
@@ -98,9 +101,16 @@ export const GridContainer = styled.ul`
 
 export const Button = styled.button`
   padding: 8px 16px;
-  background: #c62e65;
+  background: rgb(1, 180, 228);
   border: none;
   cursor: pointer;
   color: white;
   font-size: 20px;
+  border-radius: 6px;
+
+  &:hover {
+    background: rgb(3, 37, 65);
+    transition: 0.2s ease;
+    outline: none;
+  }
 `;
