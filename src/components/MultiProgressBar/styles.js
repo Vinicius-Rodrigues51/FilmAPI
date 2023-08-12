@@ -14,8 +14,8 @@ export const ProgressBars = styled.div`
   &::before {
     content: "";
     position: absolute;
-    height: 84%;
-    width: 84%;
+    height: 87%;
+    width: 87%;
     background-color: #081c22;
     border-radius: 50%;
   }

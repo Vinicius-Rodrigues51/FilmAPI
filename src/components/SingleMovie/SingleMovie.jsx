@@ -7,6 +7,9 @@ import ProgressBar from "../ProgressBar/ProgressBar";
 import { Wraper, Backdoor, Content, Cast, Recomendations } from "./styles";
 import { ReactComponent as Player } from "../../Assets/player.svg";
 import Midia from "./Midia";
+import no_image from "../../Assets/no_image.svg";
+import { borderRadius } from "polished";
+console.log(no_image);
 
 const SingleMovie = () => {
   const [modal, setModal] = useState(null);
@@ -111,18 +114,37 @@ const SingleMovie = () => {
     <Fragment>
       {modal && <Modal modal={modal} setModal={setModal} id={id} type={type} />}
       <Wraper
-        style={{
-          backgroundImage: `url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${data.backdrop_path})`,
-        }}
+        style={
+          data.backdrop_path
+            ? {
+                backgroundImage: `url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${data.backdrop_path})`,
+              }
+            : { backgroundImage: `` }
+        }
       >
         <Backdoor>
           <Content>
             <div className="box">
-              <div className="zoom">
-                <img
-                  src={`https://image.tmdb.org/t/p/w400${data.poster_path}`}
-                  alt={`Poster do filme ${data.title}`}
-                />
+              <div
+                className="zoom"
+                style={
+                  data.poster_path
+                    ? { backgroundColor: "" }
+                    : {
+                        backgroundColor: "#dbdbdb",
+                        borderRadius: "6px",
+                        height: "100%",
+                      }
+                }
+              >
+                {data.poster_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w400${data.poster_path}`}
+                    alt={`Poster do filme ${data.title}`}
+                  />
+                ) : (
+                  <img style={{ height: "180px" }} src={no_image} />
+                )}
               </div>
 
               {provider && (
@@ -185,14 +207,16 @@ const SingleMovie = () => {
               </p>
 
               <div className="credits">
-                {crew.map((member) => (
-                  <div key={member.id}>
-                    <h4>{member.name}</h4>
-                    <p>Diretor</p>
-                  </div>
-                ))}
+                {crew &&
+                  crew.map((member) => (
+                    <div key={member.id}>
+                      <h4>{member.name}</h4>
+                      <p>Diretor</p>
+                    </div>
+                  ))}
 
                 {characters &&
+                  characters &&
                   characters.map((member) => (
                     <div key={member.id}>
                       <h4>{member.name}</h4>
@@ -247,9 +271,20 @@ const SingleMovie = () => {
                   .join("-")}`}
               >
                 <div className="image">
-                  <img
-                    src={`https://www.themoviedb.org/t/p/w250_and_h141_face${movie.backdrop_path}`}
-                  />
+                  {movie.backdrop_path ? (
+                    <img
+                      src={`https://www.themoviedb.org/t/p/w250_and_h141_face${movie.backdrop_path}`}
+                    />
+                  ) : (
+                    <img
+                      style={{
+                        height: "141px",
+                        width: "250px",
+                        backgroundColor: "#d4d4d4",
+                      }}
+                      src={no_image}
+                    />
+                  )}
                   <div className="details">
                     <p>{movie.release_date.split("-").reverse().join("/")}</p>
                   </div>

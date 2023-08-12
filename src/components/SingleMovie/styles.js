@@ -39,8 +39,14 @@ export const Content = styled.div`
   .zoom {
     overflow: hidden;
     width: 300px;
+    /* height: 100%; */
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    /* background-color: #fff; */
   }
 
   .zoom img {
@@ -357,6 +363,11 @@ export const Recomendations = styled.div`
   margin-top: 30px;
   margin-bottom: 100px;
   position: relative;
+
+  .recSlider {
+    width: 250px;
+    height: 227px;
+  }
 
   &::-webkit-scrollbar-thumb {
     background-color: rgb(227, 227, 227);

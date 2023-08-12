@@ -24,7 +24,7 @@ const useFetch = () => {
     } finally {
       setLoading(false);
       setData(json);
-      // console.log(json);
+      console.log(json);
       return { response, json };
     }
   }, []);

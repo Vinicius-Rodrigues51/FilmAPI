@@ -33,7 +33,7 @@ export const Container = styled.div`
     background-image: url("https://www.themoviedb.org/assets/2/v4/misc/trending-bg-39afc2a5f77e31d469b25c187814c0a2efef225494c038098d62317d923f8415.svg");
     background-position: 0% 160px;
     background-size: 1400px;
-    background-repeat: no-repeat;
+    background-repeat: repeat-x;
 
     &::-webkit-scrollbar {
       height: 8px;

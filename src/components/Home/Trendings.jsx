@@ -59,7 +59,9 @@ const Trendings = () => {
 
     setTimeout(() => {
       setPeriod("day");
-      setOpacity(1);
+      setTimeout(() => {
+        setOpacity(1);
+      }, 300);
     }, 999);
   }
 
@@ -70,7 +72,9 @@ const Trendings = () => {
 
     setTimeout(() => {
       setPeriod("week");
-      setOpacity(1);
+      setTimeout(() => {
+        setOpacity(1);
+      }, 300);
     }, 999);
   }
 
