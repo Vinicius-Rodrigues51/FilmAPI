@@ -10,6 +10,12 @@ import { userContext } from "../../UserContext";
 import useFetch from "../../hooks/useFetch";
 import { Account_Details } from "../../api";
 import { useEffect } from "react";
+import logo from "../../Assets/logo.svg";
+import smallLogo from "../../Assets/small_logo.svg";
+import burger from "../../Assets/burger.svg";
+import search_blue from "../../Assets/search_blue.svg";
+import MobileWall from "./MobileWall";
+import { Fragment } from "react";
 
 const Header = ({ toggleTheme }) => {
   const { colors, title } = useContext(ThemeContext); // Puxando o contexto global do theme
@@ -17,12 +23,12 @@ const Header = ({ toggleTheme }) => {
   const { login } = useContext(userContext);
   const { request, data } = useFetch();
   const id = useParams();
+  const windowWidth = window.innerWidth;
 
   useEffect(() => {
     const { url, options } = Account_Details(id);
 
     request(url, options);
-    // console.log(data);
   }, [login]);
 
   function isLight() {
@@ -33,63 +39,86 @@ const Header = ({ toggleTheme }) => {
     }
   }
 
-  if (data === null) return null;
-  return (
-    <Container>
-      <Link to={"/"}>
-        <h2>Movie World</h2>
-      </Link>
+  if (data === null) {
+    return null;
+  } else if (windowWidth > 800) {
+    return (
+      <Container>
+        <Link className="logoBox" to={"/"}>
+          <img className="logo" src={logo}></img>
+        </Link>
 
-      <nav>
-        <ul>
-          <Link to={"/search"}>
-            <li>Pesquisar</li>
-          </Link>
-          <Link to={"/movie"}>
-            <li>Filmes</li>
-          </Link>
-          <Link to={"/tv"}>
-            <li>Series</li>
-          </Link>
-          {user ? (
-            <Link to={`/conta/${user}`}>
-              <li>{data.username}</li>
+        <nav>
+          <ul>
+            <Link to={"/search"}>
+              <li>Pesquisar</li>
             </Link>
-          ) : (
-            false
-          )}
-          {user ? (
-            <Link to={"/logout"}>
-              <li>Sair</li>
+            <Link to={"/movie"}>
+              <li>Filmes</li>
             </Link>
-          ) : (
-            <Link to={"/login"}>
-              <li>Login</li>
+            <Link to={"/tv"}>
+              <li>Series</li>
             </Link>
-          )}
+            {user ? (
+              <Link to={`/conta/${user}`}>
+                <li>{data.username}</li>
+              </Link>
+            ) : (
+              false
+            )}
+            {user ? (
+              <Link to={"/logout"}>
+                <li>Sair</li>
+              </Link>
+            ) : (
+              <Link to={"/login"}>
+                <li>Login</li>
+              </Link>
+            )}
 
-          <label htmlFor="Switch">
-            <img src={isLight()} />
-          </label>
+            <label htmlFor="Switch">
+              <img src={isLight()} />
+            </label>
 
-          <div id="Switch2">
-            <Switch
-              id="Switch"
-              onChange={toggleTheme}
-              checked={title === "dark"}
-              checkedIcon={false}
-              uncheckedIcon={false}
-              width={35}
-              height={10}
-              handleDiameter={18}
-              offColor={shade(0.15, colors.primary)}
-              onColor={tint(0.5, colors.primary)}
-            />
+            <div id="Switch2">
+              <Switch
+                id="Switch"
+                onChange={toggleTheme}
+                checked={title === "dark"}
+                checkedIcon={false}
+                uncheckedIcon={false}
+                width={35}
+                height={10}
+                handleDiameter={18}
+                offColor={shade(0.15, colors.primary)}
+                onColor={tint(0.5, colors.primary)}
+              />
+            </div>
+          </ul>
+        </nav>
+      </Container>
+    );
+  } else if (windowWidth <= 800) {
+    return (
+      <Fragment>
+        <Container>
+          <span className="burger">
+            <img src={burger} alt="Burger" />
+          </span>
+          <Link className="logoBox" to={"/"}>
+            <img className="logo" src={smallLogo}></img>
+          </Link>
+
+          <div className="Icon">
+            <Link to={"/search"}>
+              <img src={search_blue} alt="search Icon" />
+            </Link>
           </div>
-        </ul>
-      </nav>
-    </Container>
-  );
+        </Container>
+        <MobileWall></MobileWall>
+      </Fragment>
+    );
+  }
 };
 
 export default Header;

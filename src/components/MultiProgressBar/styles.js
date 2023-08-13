@@ -14,8 +14,8 @@ export const ProgressBars = styled.div`
   &::before {
     content: "";
     position: absolute;
-    height: 87%;
-    width: 87%;
+    height: 86%;
+    width: 86%;
     background-color: #081c22;
     border-radius: 50%;
   }
@@ -23,7 +23,7 @@ export const ProgressBars = styled.div`
   .value-container {
     position: relative;
     color: #fff;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     z-index: 3;
   }

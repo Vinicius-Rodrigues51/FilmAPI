@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  /* max-width: 1820px; */
   margin: 0 auto;
 
   .background {
@@ -74,7 +73,20 @@ export const Container = styled.div`
     }
   }
 
-  /* @media (max-width: 820px) {
-    
-  } */
+  @media (max-width: 820px) {
+    h2 {
+      font-size: 40px;
+      text-align: center;
+    }
+    h3 {
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .wraper {
+      padding: 20px 30px;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 `;
