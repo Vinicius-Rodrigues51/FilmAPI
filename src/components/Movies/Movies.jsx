@@ -39,7 +39,14 @@ const Movies = () => {
       <GridContainer>
         {data.results.map((film) => (
           <li key={film.id}>
-            <div style={{ background: "#d4d4d4" }} className="imgBox">
+            <div
+              style={
+                film.poster_path
+                  ? { background: "none" }
+                  : { background: "#d4d4d4" }
+              }
+              className="imgBox"
+            >
               <Link
                 to={`/movie/${film.id}-${film.original_title
                   .split(" ")

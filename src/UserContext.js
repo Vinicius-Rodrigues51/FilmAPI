@@ -7,6 +7,7 @@ export const SearchedValue = ({ children }) => {
   const [busca, setBusca] = useState("");
   const [Moviepage, setMoviePage] = useState(1);
   const [login, setLogin] = useState(false);
+  const [wallState, setWallState] = useState("");
 
   useEffect(() => {
     const token = window.localStorage.getItem("id_session");
@@ -24,6 +25,8 @@ export const SearchedValue = ({ children }) => {
         Moviepage,
         setMoviePage,
         login,
+        wallState,
+        setWallState,
       }}
     >
       {children}

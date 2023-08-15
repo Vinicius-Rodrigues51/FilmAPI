@@ -20,7 +20,7 @@ import { Fragment } from "react";
 const Header = ({ toggleTheme }) => {
   const { colors, title } = useContext(ThemeContext); // Puxando o contexto global do theme
   const user = localStorage.getItem("user_login_token");
-  const { login } = useContext(userContext);
+  const { login, wallState, setWallState } = useContext(userContext);
   const { request, data } = useFetch();
   const id = useParams();
   const windowWidth = window.innerWidth;
@@ -30,6 +30,15 @@ const Header = ({ toggleTheme }) => {
 
     request(url, options);
   }, [login]);
+
+  const handleBurger = (event) => {
+    event.preventDefault();
+    if (wallState === "0") {
+      setWallState("");
+    } else {
+      setWallState("0");
+    }
+  };
 
   function isLight() {
     if (title === "light") {
@@ -103,7 +112,7 @@ const Header = ({ toggleTheme }) => {
       <Fragment>
         <Container>
           <span className="burger">
-            <img src={burger} alt="Burger" />
+            <img onClick={handleBurger} src={burger} alt="Burger" />
           </span>
           <Link className="logoBox" to={"/"}>
             <img className="logo" src={smallLogo}></img>
