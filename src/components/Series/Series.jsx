@@ -37,7 +37,14 @@ const Series = () => {
       <GridContainer>
         {data.results.map((tv) => (
           <li key={tv.id}>
-            <div style={{ background: "#d4d4d4" }} className="imgBox">
+            <div
+              style={
+                tv.poster_path
+                  ? { background: "none" }
+                  : { background: "#d4d4d4" }
+              }
+              className="imgBox"
+            >
               <Link to={`${tv.id}-${tv.original_name.split(" ").join("-")}`}>
                 {tv.poster_path ? (
                   <img

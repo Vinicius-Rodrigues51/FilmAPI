@@ -22,7 +22,7 @@ const SingleTv = () => {
 
   useEffect(() => {
     request(
-      `https://api.themoviedb.org/3/tv/${id}?api_key=${api_key}&language=pt-BR&append_to_response=content_ratings,recommendations,credits,videos,watch/providers,images&include_image_language=pt,en`
+      `https://api.themoviedb.org/3/tv/${id}?api_key=${api_key}&language=en-US&append_to_response=content_ratings,recommendations,credits,videos,watch/providers,images&include_image_language=pt,en`
     );
   }, [id]);
 
