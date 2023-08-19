@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 
 const useFetch = () => {
   const [data, setData] = useState(null);
+  const [res, setRes] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const api_key = "90235d9c3f219018a6e7604b6b6f6267";
@@ -24,12 +25,13 @@ const useFetch = () => {
     } finally {
       setLoading(false);
       setData(json);
+      setRes(response);
       console.log(json);
       return { response, json };
     }
   }, []);
 
-  return { data, loading, error, request, api_key };
+  return { data, loading, error, request, api_key, res };
 };
 
 export default useFetch;

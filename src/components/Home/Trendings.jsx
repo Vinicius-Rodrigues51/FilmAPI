@@ -6,7 +6,7 @@ import { useState } from "react";
 import MultiProgressBar from "../MultiProgressBar/MultiProgressBar";
 
 const Trendings = () => {
-  const { api_key, data, request } = useFetch();
+  const { api_key, data, request, res } = useFetch();
   const [period, setPeriod] = useState("day");
   const [opacity, setOpacity] = useState(100);
   const firstAnchor = useRef();
@@ -60,7 +60,9 @@ const Trendings = () => {
     setTimeout(() => {
       setPeriod("day");
       setTimeout(() => {
-        setOpacity(1);
+        if (res.ok) {
+          setOpacity(1);
+        }
       }, 300);
     }, 999);
   }
@@ -73,7 +75,9 @@ const Trendings = () => {
     setTimeout(() => {
       setPeriod("week");
       setTimeout(() => {
-        setOpacity(1);
+        if (res.ok) {
+          setOpacity(1);
+        }
       }, 300);
     }, 999);
   }

@@ -169,4 +169,15 @@ export const Container = styled.div`
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  @media (max-width: 820px) {
+    .column_header {
+      justify-content: center;
+      padding: 0;
+      margin: 0 auto;
+      h1 {
+        font-size: 1.5em;
+      }
+    }
+  }
 `;

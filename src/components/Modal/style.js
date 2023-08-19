@@ -16,7 +16,7 @@ export const ModalStyle = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 100vw;
     height: 100%;
   }
 
@@ -24,9 +24,12 @@ export const ModalStyle = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1420px;
+    width: 100%;
     background-color: black;
     padding: 10px 10px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
   }
 
   .xButton {

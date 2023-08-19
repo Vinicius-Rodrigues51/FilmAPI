@@ -6,6 +6,8 @@ import { ReactComponent as Close } from "../../Assets/x.svg";
 
 const Modal = ({ modal, setModal, id, type }) => {
   const { request, data, loading, api_key } = useFetch();
+  const windowWidth = window.innerWidth;
+  let height;
   let video;
 
   useEffect(() => {
@@ -27,6 +29,12 @@ const Modal = ({ modal, setModal, id, type }) => {
     }
   }
 
+  if (windowWidth > 800) {
+    height = "100%";
+  } else {
+    height = "270px";
+  }
+
   if (data) {
     video = getVideoURL();
   }
@@ -45,8 +53,8 @@ const Modal = ({ modal, setModal, id, type }) => {
           <iframe
             type="text/html"
             style={{ background: "#000" }}
-            width="1420"
-            height="798"
+            width="100%"
+            height={height}
             src={`//www.youtube.com/embed/${video}?autoplay=1&origin=https%3A%2F%2Fwww.themoviedb.org&hl=pt&modestbranding=1&fs=1&autohide=1`}
             frameBorder="0"
             allowFullScreen="true"

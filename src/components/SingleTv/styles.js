@@ -6,6 +6,12 @@ export const Wraper = styled.div`
   background-position: right -200px center;
   background-size: cover;
   background-repeat: no-repeat;
+
+  @media (max-width: 820px) {
+    height: auto;
+    background-position: calc((((100vw / 2.222222) - 20px) / 1.5) / 2) 0;
+    background-color: rgb(31.5, 31.5, 31.5);
+  }
 `;
 
 export const Backdoor = styled.div`
@@ -16,6 +22,15 @@ export const Backdoor = styled.div`
     rgba(31.5, 31.5, 31.5, 1) 150px,
     rgba(31.5, 31.5, 31.5, 0.6) 100%
   );
+
+  @media (max-width: 820px) {
+    background: linear-gradient(
+      to right,
+      rgba(31.5, 31.5, 31.5, 1) 20%,
+      rgba(31.5, 31.5, 31.5, 0) 50%
+    );
+    padding: 0 30px;
+  }
 `;
 
 export const Content = styled.div`
@@ -435,5 +450,126 @@ export const Recomendations = styled.div`
       pointer-events: none;
       transition: opacity linear 0.3s;
     }
+  }
+`;
+
+export const MobileContent = styled.div`
+  max-width: 1320px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 30px 0;
+
+  .box {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    p {
+      color: #ddd;
+    }
+  }
+
+  .zoom {
+    overflow: hidden;
+    width: 97px;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  .zoom img {
+    max-width: 100%;
+    height: 100%;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.07);
+    }
+  }
+
+  .content {
+    background: rgb(3, 37, 65);
+    text-align: left;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    p,
+    h3 {
+      font-size: 18px;
+    }
+  }
+`;
+
+export const MobileDetails = styled.div`
+  background-color: rgb(31.5, 31.5, 31.5);
+  color: #fff;
+
+  .titleBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .title {
+    font-size: calc(0.7em + 3vw);
+
+    span {
+      opacity: 0.8;
+      font-size: 0.8em;
+    }
+  }
+
+  .vote_trailer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .vote {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    /* max-width: 60px; */
+
+    h2 {
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+
+  .trailer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .trailer h2 {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .divisor {
+    width: 1px;
+    height: 24px;
+    border-left: 1px solid rgb(255, 255, 255, 0.3);
+    margin-top: 4px;
+    padding-right: 2px;
+  }
+
+  .play {
+    filter: invert(1);
+    margin-right: 6px;
+    width: 1em;
+    height: 1em;
   }
 `;
