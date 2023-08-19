@@ -295,40 +295,6 @@ const SingleTv = () => {
                   )}
                 </div>
               </div>
-              {/* <div className="details">
-                <h1 className="title">
-                  {data.name} ({data.first_air_date.substr(0, 4)})
-                </h1>
-
-                <div className="subDet">
-                  {age === "" ? null : <span className="age">{age}</span>}
-                  <span className="genre">
-                    {data.genres.map((genre, index) => (
-                      <span key={genre.id}>
-                        {genre.name}
-                        {data.genres.length - 1 == index ? "" : ", "}{" "}
-                      </span>
-                    ))}
-                  </span>
-                  <span className="time">{data.episode_run_time[0] + "m"}</span>
-                </div>
-
-                <div className="trailer">
-                  <ProgressBar data={data.vote_average.toFixed(1)} />
-                  {isVideos && (
-                    <div className="player" onClick={() => setModal(true)}>
-                      <Player className="svg" />
-                      <button className="trailerButton">
-                        Reproduzir trailer
-                      </button>
-                    </div>
-                  )}
-                </div>
-
-                <p className="tagline">{data.tagline}</p>
-                <h1>Sinopse</h1>
-                <p className="overview">{data.overview}</p>
-              </div> */}
             </MobileContent>
           </Backdoor>
         </Wraper>
@@ -347,15 +313,6 @@ const SingleTv = () => {
                 Avaliação dos <br /> usuários
               </h2>
             </div>
-
-            {/* {isVideos && (
-                    <div className="player" onClick={() => setModal(true)}>
-                      <Player className="svg" />
-                      <button className="trailerButton">
-                        Reproduzir trailer
-                      </button>
-                    </div>
-                  )} */}
             {isVideo && (
               <div className="trailer">
                 <span className="divisor"></span>
@@ -366,6 +323,33 @@ const SingleTv = () => {
                 <h2 onClick={() => setModal(true)}>Reproduzir trailer</h2>
               </div>
             )}
+          </div>
+
+          <div className="subDet">
+            <div className="ageDetails">
+              {age === "" ? null : <span className="certification">{age}</span>}
+            </div>
+            <div className="genreDetails">
+              <span className="genre">
+                {data.genres.map((genre, index) => (
+                  <span key={genre.id}>
+                    {genre.name}
+                    {data.genres.length - 1 == index ? "" : ", "}{" "}
+                  </span>
+                ))}
+              </span>
+            </div>
+            {/* <span className="time">{data.episode_run_time[0] + "m"}</span> */}
+          </div>
+
+          <div className="overview">
+            <div className="tagline">
+              <h2>{data.tagline}</h2>
+            </div>
+
+            <h1>Sinopse</h1>
+
+            <p className="text">{data.overview}</p>
           </div>
         </MobileDetails>
 

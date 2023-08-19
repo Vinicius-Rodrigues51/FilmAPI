@@ -354,6 +354,37 @@ export const Cast = styled.div`
     border-top-right-radius: 5px;
     width: 140px;
   }
+
+  @media (max-width: 820px) {
+    h1 {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-left: 20px;
+    }
+
+    .singleActor {
+      width: 120px;
+      margin-bottom: 20px;
+      background: ${(props) => props.theme.colors.background};
+      color: ${(props) => props.theme.colors.text};
+      border-radius: 7px;
+      box-shadow: 1px 2px 13px -5px #000000;
+    }
+
+    .castIMG {
+      width: 120px;
+      height: 152px;
+      background-color: rgb(224, 224, 224);
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+    }
+
+    img {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      width: 120px;
+    }
+  }
 `;
 
 export const Recomendations = styled.div`
@@ -571,5 +602,61 @@ export const MobileDetails = styled.div`
     margin-right: 6px;
     width: 1em;
     height: 1em;
+  }
+
+  .subDet {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  .ageDetails {
+    margin-bottom: 6px;
+  }
+
+  .certification {
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.6);
+    padding: 0.06em 4px !important;
+
+    display: inline-flex;
+    white-space: nowrap;
+    align-items: center;
+    align-content: center;
+    line-height: 1;
+    border-radius: 2px;
+  }
+
+  .genre {
+    font-size: 0.9em;
+    color: #fff;
+    font-weight: 400;
+  }
+
+  .overview {
+    padding: 10px 20px;
+
+    h1 {
+      font-size: 1.2em;
+      margin: 10px 0 8px 0;
+    }
+  }
+
+  .tagline h2 {
+    font-size: 1em;
+    font-weight: 400;
+    color: #fff;
+    opacity: 0.7;
+    font-style: italic;
+  }
+
+  .text {
+    margin-bottom: 30px;
+    font-size: 0.9em;
   }
 `;

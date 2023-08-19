@@ -131,4 +131,20 @@ export const SeasonStyled = styled.div`
       height: 100%;
     }
   }
+
+  @media (max-width: 820px) {
+    .seasonCardBox {
+      padding: 20px;
+    }
+
+    .seasonCard {
+      background: #fff;
+    }
+
+    h1 {
+      font-size: 1.2em;
+      font-weight: bolder;
+      margin-left: 20px;
+    }
+  }
 `;
