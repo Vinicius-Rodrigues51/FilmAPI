@@ -482,6 +482,15 @@ export const Recomendations = styled.div`
       transition: opacity linear 0.3s;
     }
   }
+
+  @media (max-width: 820px) {
+    width: 100%;
+    padding: 20px;
+    h1 {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  }
 `;
 
 export const MobileContent = styled.div`
